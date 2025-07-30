@@ -1,0 +1,358 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Car Rental System</title>
+</head>
+<body>
+    <h1>Available Cars</h1>
+    <ul id="car-list"></ul>
+
+    <h2>Rent a Car</h2>
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="carId" placeholder="Car ID">
+    <input type="number" id="days" placeholder="Rental Days">
+    <button onclick="rentCar()">Rent</button>
+
+    <h2>Return a Car</h2>
+    <input type="text" id="returnCarId" placeholder="Car ID">
+    <button onclick="returnCar()">Return</button>
+
+    <p id="response"></p>
+
+    <script>
+        fetch("/api/cars")
+            .then(res => res.json())
+            .then(data => {
+                const list = document.getElementById("car-list");
+                data.forEach(car => {
+                    const li = document.createElement("li");
+                    li.textContent = `${car.carId} - ${car.brand} ${car.model}`;
+                    list.appendChild(li);
+                });
+            });
+
+        function rentCar() {
+            fetch("/api/rent", {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: document.getElementById("name").value,
+                    carId: document.getElementById("carId").value,
+                    days: document.getElementById("days").value
+                })
+            }).then(res => res.text()).then(msg => {
+                document.getElementById("response").innerText = msg;
+            });
+        }
+
+        function returnCar() {
+            fetch("/api/return", {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    carId: document.getElementById("returnCarId").value
+                })
+            }).then(res => res.text()).then(msg => {
+                document.getElementById("response").innerText = msg;
+            });
+        }
+    </script>
+</body>
+</html> -->
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Rental System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.unsplash.com/photo-1549921296-3a4a5e62ed3a') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 60px auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #00e6e6;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 10px;
+            background: #1e1e1e;
+            margin: 6px 0;
+            border-left: 5px solid #00e6e6;
+            border-radius: 5px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+        }
+
+        input {
+            background: #f1f1f1;
+        }
+
+        button {
+            background: #00e6e6;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #00b3b3;
+        }
+
+        #response {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ffcc00;
+        }
+
+        .icon {
+            color: #00e6e6;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-car-side icon"></i>Car Rental System</h1>
+
+        <h2><i class="fas fa-list icon"></i>Available Cars</h2>
+        <ul id="car-list"></ul>
+
+        <h2><i class="fas fa-key icon"></i>Rent a Car</h2>
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="text" id="carId" placeholder="Car ID">
+        <input type="number" id="days" placeholder="Rental Days">
+        <button onclick="rentCar()"><i class="fas fa-car icon"></i>Rent</button>
+
+        <h2><i class="fas fa-undo icon"></i>Return a Car</h2>
+        <input type="text" id="returnCarId" placeholder="Car ID">
+        <button onclick="returnCar()"><i class="fas fa-undo icon"></i>Return</button>
+
+        <p id="response"></p>
+    </div>
+
+    <script>
+        fetch("/api/cars")
+            .then(res => res.json())
+            .then(data => {
+                const list = document.getElementById("car-list");
+                list.innerHTML = "";
+                data.forEach(car => {
+                    const li = document.createElement("li");
+                    li.textContent = `${car.carId} - ${car.brand} ${car.model}`;
+                    list.appendChild(li);
+                });
+            });
+
+        function rentCar() {
+            fetch("/api/rent", {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: document.getElementById("name").value,
+                    carId: document.getElementById("carId").value,
+                    days: document.getElementById("days").value
+                })
+            }).then(res => res.text()).then(msg => {
+                document.getElementById("response").innerText = msg;
+            });
+        }
+
+        function returnCar() {
+            fetch("/api/return", {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    carId: document.getElementById("returnCarId").value
+                })
+            }).then(res => res.text()).then(msg => {
+                document.getElementById("response").innerText = msg;
+            });
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rent a Car | Car Rental System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Car Rental Logo" class="logo">
+        <h1>Car Rental System</h1>
+        <nav>
+            <a href="index.html">Rent Car</a>
+            <a href="return.html">Return Car</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Available Cars</h2>
+        <div class="car-list" id="car-list"></div>
+
+        <h2>Rent a Car</h2>
+        <div class="form-container">
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="text" id="carId" placeholder="Car ID">
+            <input type="number" id="days" placeholder="Rental Days">
+            <button onclick="rentCar()">Rent Now</button>
+        </div>
+
+        <p id="response"></p>
+    </main>
+
+    <script>
+        fetch("/api/cars")
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById("car-list");
+                data.forEach((car, index) => {
+                    const card = document.createElement("div");
+                    card.className = "car-card";
+                    card.innerHTML = `
+                        <img src="images/car${(index % 3) + 1}.jpg" alt="Car">
+                        <h3>${car.brand} ${car.model}</h3>
+                        <p><strong>ID:</strong> ${car.carId}</p>
+                    `;
+                    container.appendChild(card);
+                });
+            });
+
+        function rentCar() {
+            fetch("/api/rent", {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: document.getElementById("name").value,
+                    carId: document.getElementById("carId").value,
+                    days: document.getElementById("days").value
+                })
+            }).then(res => res.text()).then(msg => {
+                document.getElementById("response").innerText = msg;
+            });
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rent a Car | Car Rental System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Car Rental Logo" class="logo">
+        <h1>Car Rental System</h1>
+        <nav>
+            <a href="index.html">Rent Car</a>
+            <a href="return.html">Return Car</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Available Cars</h2>
+        <div class="car-list" id="car-list"></div>
+
+        <h2>Rent a Car</h2>
+        <div class="form-container">
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="text" id="carId" placeholder="Car ID">
+            <input type="number" id="days" placeholder="Rental Days">
+            <button onclick="rentCar()">Rent Now</button>
+        </div>
+
+        <p id="response"></p>
+    </main>
+
+    <script>
+        fetch("/api/cars")
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById("car-list");
+                data.forEach((car, index) => {
+                    const card = document.createElement("div");
+                    card.className = "car-card";
+                    card.innerHTML = `
+                        <img src="images/car${(index % 3) + 1}.png" alt="Car">
+                        <h3>${car.brand} ${car.model}</h3>
+                        <p><strong>ID:</strong> ${car.carId}</p>
+                    `;
+                    container.appendChild(card);
+                });
+            });
+
+        function rentCar() {
+            fetch("/api/rent", {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: document.getElementById("name").value,
+                    carId: document.getElementById("carId").value,
+                    days: document.getElementById("days").value
+                })
+            }).then(res => res.text()).then(msg => {
+                document.getElementById("response").innerText = msg;
+            });
+        }
+    </script>
+</body>
+</html>
